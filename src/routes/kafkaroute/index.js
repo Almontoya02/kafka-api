@@ -3,7 +3,7 @@ const router = new express.Router()
 const kafka = require('../../../kafka')
 const producer = kafka.producer()
 const consumer = kafka.consumer({ groupId: 'test-group' })
-const topic="topic-api"
+const topic="holi"
 router.post('/mensaje',async(req,res)=>{
     try {
         const request= req.body
