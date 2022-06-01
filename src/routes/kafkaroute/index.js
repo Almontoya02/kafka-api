@@ -3,13 +3,13 @@ const router = new express.Router()
 const kafka = require('../../../kafka')
 const producer = kafka.producer()
 const consumer = kafka.consumer({ groupId: 'test-group' })
-
+const topic="topic-api"
 router.post('/mensaje',async(req,res)=>{
     try {
         const request= req.body
         await producer.connect()
         const responses = await producer.send({
-          topic: "holi",
+          topic: topic,
           messages: [{
             // Name of the published package as key, to make sure that we process events in order
             key: request.message,
@@ -48,7 +48,7 @@ router.post('/mensaje',async(req,res)=>{
 router.get('/getMensaje',async(req,res)=>{
   try {
     await consumer.connect()
-    await consumer.subscribe({ topic: 'holi', fromBeginning: true }).catch((e)=>console.log(e))
+    await consumer.subscribe({ topic: topic, fromBeginning: true }).catch((e)=>console.log(e))
     await consumer.run({
       eachMessage: async ({ message }) => {
         console.log({
