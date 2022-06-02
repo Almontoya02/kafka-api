@@ -1,7 +1,7 @@
 const { Kafka } = require('kafkajs')
 
-username="U3WLHGITZ7QODJ52"
-password="eabTVDGCyvpppxdwO+eYzhfVZURUZ/phWnWCawaiIPUL24P85wn03T3qIsBM3BjY"
+username="6ARGYT7HFHQQ5XSO"
+password="8hO3ZVpbvBmsUHoc1tYqHPLUyjghXCSdLvy4UfYTkmOux6+ur5iAspJFhD2C5TMB"
 const sasl = username && password ? { username, password, mechanism: 'plain' } : null
 const ssl = !!sasl
 //f
@@ -9,7 +9,7 @@ const ssl = !!sasl
 // the environment variable KAFKA_BOOTSTRAP_SERVER
 const kafka = new Kafka({
   clientId: 'npm-slack-notifier',
-  brokers: ["pkc-6ojv2.us-west4.gcp.confluent.cloud:9092"],
+  brokers: ["pkc-ldjyd.southamerica-east1.gcp.confluent.cloud:9092"],
   ssl,
   sasl  
 })
